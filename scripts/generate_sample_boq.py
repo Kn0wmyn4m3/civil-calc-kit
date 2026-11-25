@@ -1,0 +1,44 @@
+"""Generate a repeatable 18-item contractor BOQ with two rate anomalies."""
+
+import csv
+from pathlib import Path
+
+
+ROWS = (
+    ("Community centre | contractor BOQ",),
+    (),
+    ("  Work Description ", " TRADE ", "U.O.M.", " quantity ", " Unit Price ($) "),
+    ("Foundation strip excavation", " earthwork ", "m³", "1,250", "$17.25"),
+    ("Drainage trench excavation", "EXCAVATION", "m³", "345", "$19.50"),
+    ("Bulk cut and stockpile", "Site Grading", "m³", "780", "$16.40"),
+    ("C25 concrete to strip footings", " Concrete Works", "m³", "98.50", "$122.50"),
+    ("C30 concrete to ground slab", "CONCRETE", "m³", "146", "$127.00"),
+    ("C30 concrete to stair cores", " concrete work ", "m³", "28.75", "$295.00"),
+    ("Grade 500 reinforcement, 12 mm", "REINFORCEMENT", "kg", "2,950", "$1.20"),
+    ("Grade 500 reinforcement, 16 mm", "steel reinforcement", "kg", "3,450", "$1.24"),
+    ("Grade 500 reinforcement, 20 mm", " REBAR ", "kg", "1,675", "$0.72"),
+    (),
+    ("Plywood edge forms to foundation", "Shuttering", "m²", "186", "$28.50"),
+    ("Column formwork", "formwork ", "m²", "274", "$32.75"),
+    ("Beam side and soffit forms", "Concrete Forms", "m²", "213", "$30.80"),
+    ("Vinyl floor finish", " finishing ", "m²", "415", "$25.80"),
+    ("Ceramic floor finish", "Architectural Finishes", "m²", "185", "$31.25"),
+    ("Resilient rubber floor finish", "FINISHES", "m²", "117", "$28.40"),
+    ("LED downlight, recessed", " electrical ", "each", "62", "$86.40"),
+    ("Supply air grille", "Mechanical", "each", "22", "$92.00"),
+    ("Hose bibb with isolation valve", "MEP Services", "each", "14", "$89.50"),
+    (),
+    ("Grand Total", "", "", "", ""),
+)
+
+
+def main() -> None:
+    path = Path(__file__).resolve().parents[1] / "sample_data" / "boq_sample.csv"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as output:
+        csv.writer(output, lineterminator="\n").writerows(ROWS)
+    print(f"Saved {path}")
+
+
+if __name__ == "__main__":
+    main()

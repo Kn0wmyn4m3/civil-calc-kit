@@ -1,0 +1,19 @@
+{
+  "slug": "civil-calc-kit",
+  "title": "CivilCalc Kit — Structural & BOQ Automation",
+  "tagline": "Python toolkit for simply supported beam analysis and construction BOQ cost auditing with native Excel reports.",
+  "category": "Engineering & Automation",
+  "tech_stack": ["Python", "pandas", "openpyxl", "pytest"],
+  "highlights": [
+    "Analytical simply supported beam solver (point loads, UDL, moments) with SFD/BMD Excel charts",
+    "Messy construction BOQ cleaner with category rollups and >25% unit-rate anomaly flagging",
+    "Verified against textbook structural mechanics formulas via pytest"
+  ],
+  "repo_url": "https://github.com/Kn0wmyn4m3/civil-calc-kit",
+  "live_demo_url": null,
+  "sample_outputs": ["examples/beam_report.xlsx", "examples/boq_summary.xlsx"],
+  "run_command": "python3 -m civil_calc beam --length 6.0 --udl 12.0 --point-load 20.0@2.5 --output examples/beam_report.xlsx",
+  "test_command": "python3 -m pytest -q",
+  "test_summary": "31 passed",
+  "status": "verified"
+}
